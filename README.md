@@ -5,7 +5,7 @@ It fills not only the target object, but also the decendents of the object recur
 
 ## How to use
 
-```
+```python
 from mock_pb_gen import make_mock_pb
 # assume that ref is an instance of protobuf object
 generated = mock_pb_gen.make_mock_pb(ref)
