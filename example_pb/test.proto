@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "testenum.proto";
+import public "google/protobuf/empty.proto";
+import public "google/protobuf/wrappers.proto";
+import public "google/protobuf/timestamp.proto";
+package test;
+
+message Test {
+    uint64 id = 1;
+    string name = 2;
+    TestEnum enum = 3;
+    bool is_okay = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    oneof oneof_test {
+        OneOf1 oneof_1 = 7;
+        OneOf2 oneof_2 = 8;
+    }
+}
+
+
+message OneOf1 {
+    uint64 id = 1;
+    repeated RepeatedTestObj entities = 2;
+}
+
+message OneOf2 {
+    uint64 id = 1;
+    repeated RepeatedTestObj2 test_entities = 2;
+}
+
+message RepeatedTestObj {
+    message TypeA {
+        repeated uint32 index = 1;
+        repeated uint32 response = 2;
+    }
+
+    message TypeB {
+        string answer = 1;
+    }
+
+    string id = 1; // content-server에서의 component id
+    bool is_right = 2;
+
+    oneof type_spec {
+        TypeA objective = 4;
+        TypeB subjective = 5;
+    }
+}
+
+message RepeatedTestObj2 {
+    string id = 1;
+}
