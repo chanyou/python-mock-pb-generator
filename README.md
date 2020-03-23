@@ -14,3 +14,7 @@ generated = mock_pb_gen.make_mock_pb(ref)
 
 Please refer to tests/gen_test.py
 
+
+# License
+
+FREE
